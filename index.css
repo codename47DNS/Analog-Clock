@@ -1,0 +1,141 @@
+/* Common Code */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main Code */
+.con {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+:root {
+    --sec-color : rgb(218,36,36);
+    --min-color : rgb(241,142,11);
+    --hour-color : rgb(226,87,7);
+}
+
+.clock {
+    width: 42vw;
+    height: 42vw;
+    border-radius: 50%;
+    background-color: rgb(95, 95, 95);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+}
+
+.clock-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.clock-mirror,
+.clock-number,
+.sec-niddle,
+.min-niddle,
+.hour-niddle,
+.center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.clock-mirror {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.clock-number {
+    transform: rotate(calc(30deg*var(--i)));
+}
+
+.clock-number > span {
+    color: white;
+    display: block;
+    text-align: center;
+    transform: rotate(calc(-30deg*var(--i)));
+    padding: 10px 0;
+    font-size: 3.5vw;
+    text-shadow: 0 0 10px black;
+}
+
+.sec-niddle,
+.min-niddle,
+.hour-niddle {
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+.min-niddle {
+    z-index: 9;
+}
+
+.hour-niddle {
+    z-index: 8;
+}
+
+.sec-niddle .stick,
+.min-niddle .stick,
+.hour-niddle .stick {
+    width: 3px;
+    height: 42%;
+    margin-top: 13%;
+    background-color: var(--sec-color);
+    box-shadow: 0 0 10px 0.5px rgb(78, 78, 78);
+}
+
+.min-niddle .stick {
+    background-color: var(--min-color);
+    margin-top: 10%;
+    height: 45%;
+    width: 5px;
+}
+
+.hour-niddle .stick {
+    background-color: var(--hour-color);
+    width: 8px;
+    height: 35%;
+    margin-top: 20%;
+}
+
+.sec-niddle .arrow,
+.min-niddle .arrow,
+.hour-niddle .arrow {
+    transform: translate(-40%,-99%);
+    border: 8px solid transparent;
+    border-bottom: 8px solid var(--sec-color);
+}
+
+.min-niddle .arrow {
+    border: 10px solid transparent;
+    border-bottom: 10px solid var(--min-color);
+}
+
+.hour-niddle .arrow {
+    border: 10px solid transparent;
+    border-bottom: 10px solid var(--hour-color);
+    transform: translate(-30%,-99%);
+}
+
+.center {
+    z-index: 11;
+    background-color: white;
+    border: 5px solid black;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
